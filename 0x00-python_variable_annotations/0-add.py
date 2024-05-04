@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""
- Add two parameter and return value
- Args:
-    a:(int)
-    b:(int)
-"""
+"""Add and return value"""
 
 
 def add(a: float, b: float) -> float:
+
+    """
+    add two parameter and return value
+        Args:
+            a:(int)
+            b:(int)
+    """
     return a + b
