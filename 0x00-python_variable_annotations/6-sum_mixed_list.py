@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 '''Add sum of mixed elem types'''
-from typing import List
+from typing import List, Union
 
 
-def sum_mixed_list(mxd_lst: List[float, int]) -> float:
+def sum_mixed_list(mxd_lst: List[Union[int, float]]) -> float:
     """
     Function to add all diff type of list elements
         Args:
