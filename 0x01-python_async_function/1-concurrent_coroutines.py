@@ -13,9 +13,11 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
             max_delay (integer): maximun random number
         Return(List[Float]): return bedback from all corotine
     '''
-    '''task1= [asyncio.create_task(wait_random(max_delay)) for _ in range(n))]'''
+    '''task1= [asyncio.create_task(wait_random(max_delay))
+        for _ in range(n))]
+    '''
     result: List[float] = []
     for i in range(n):
         result.append(asyncio.create_task(wait_random(max_delay)))
-    
+
     return [await task for task in asyncio.as_completed(result)]
