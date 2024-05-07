@@ -4,7 +4,7 @@ import asyncio
 from random import uniform
 
 
-async def async_generator():
+async def async_generator() -> float:
     '''
     async_generator: return random number using yeild
         Return: yoild
