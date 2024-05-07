@@ -1,5 +1,6 @@
-import asyncio
+#!/usr/bin/env python3
 '''Async Generator'''
+import asyncio
 from random import uniform
 
 
