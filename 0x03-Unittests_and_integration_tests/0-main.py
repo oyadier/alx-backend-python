@@ -5,4 +5,8 @@ nested = __import__('utils').access_nested_map
 if __name__ == "__main__":
     
     nested_map={'oya':{'om':{'ro':'pat', 'is':'fat'}}}
-    print(nested(nested_map, ['oya','om']))
+    
+    try:
+        print(nested(nested_map, ['oya','om', 'rob']))
+    except KeyError:
+        print("Key Error, it could'nt be found")
