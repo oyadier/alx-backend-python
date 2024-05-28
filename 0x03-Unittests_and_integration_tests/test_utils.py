@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """A Module to test some funtions in the util file"""
+
 import unittest
-from utils import access_nested_map
 from parameterized import parameterized
-from unittest.mock import MagicMock, patch
-from utils import get_json
+from unittest.mock import patch, MagicMock
+from utils import ( access_nested_map, get_json)
+from typing import Dict
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -32,18 +33,19 @@ class TestAccessNestedMap(unittest.TestCase):
 
 
 class TestGetJson(unittest.TestCase):
-
-    @patch('utils.requests.get')
+    """Make a Mock Http calss"""
     @parameterized.expand(
         [
             ("http://example.com", {"payload": True}),
             ("http://holberton.io", {"payload": False})
         ])
-    def test_get_json(self, input, output, mock_requests):
-        response = MagicMock()
-        response.json.return_value = output
-        mock_requests.return_value = response
+    @patch('utils.requests.get')
+    def test_get_json(self, test_url: str, test_payload: Dict,
+                      mock_get) -> None:
+        mock_response = MagicMock()
+        mock_response.json.return_value = test_payload
+        mock_get.return_value = mock_response
 
-        result = get_json(input)
-        mock_requests.assert_called_once_with(result)
-        self.assertEqual(result, output)
+        result = get_json(test_url)
+        mock_get.assert_called_once_with(test_url)
+        self.assertEqual(result, test_payload)
