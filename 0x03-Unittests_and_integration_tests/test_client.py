@@ -28,7 +28,7 @@ class TestGithubOrgClient(unittest.TestCase):
             test_class = GithubOrgClient('test')
             result = test_class._public_repos_url
             self.assertEqual(result, payload["repos_url"])
-            
+
     @patch('client.get_json')
     def test_public_repos(self, mock_json):
         """
@@ -49,5 +49,3 @@ class TestGithubOrgClient(unittest.TestCase):
 
             mock_public.assert_called_once()
             mock_json.assert_called_once()
-        
-    
